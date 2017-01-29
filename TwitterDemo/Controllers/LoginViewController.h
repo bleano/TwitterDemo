@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <AFNetworking/UIImageView+AFNetworking.h>
-#import <NSDictionary+BDBOAuth1Manager.h>
+#import <BDBOAuth1Manager/BDBOAuth1SessionManager.h>
 @interface LoginViewController : UIViewController
 
 @end

@@ -37,6 +37,7 @@
 */
 - (IBAction)onLoginButton:(id)sender {
     NSLog(@"Hello");
+    BDBOAuth1Credential
 }
 
 @end
