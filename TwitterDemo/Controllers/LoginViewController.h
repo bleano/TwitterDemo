@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <AFNetworking/UIImageView+AFNetworking.h>
+#import <NSDictionary+BDBOAuth1Manager.h>
 @interface LoginViewController : UIViewController
 
 @end

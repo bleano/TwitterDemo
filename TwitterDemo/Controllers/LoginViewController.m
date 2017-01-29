@@ -7,8 +7,7 @@
 //
 
 #import "LoginViewController.h"
-#import <AFNetworking/UIImageView+AFNetworking.h>
-#import <BDBOAuth1Manager/NSDictionary+BDBOAuth1Manager.h>
+
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
