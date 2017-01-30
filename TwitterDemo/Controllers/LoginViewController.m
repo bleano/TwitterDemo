@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "TwitterClient.h"
 #import "User.h"
+
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @property (strong, nonatomic) IBOutlet UIView *getTwitterDetails;
@@ -58,27 +59,8 @@
 
 - (IBAction)onGetTwitterDetails:(id)sender {
     TwitterClient *twitterClient = [TwitterClient sharedInstance];
-    [twitterClient
-     GET:@"1.1/account/verify_credentials.json"
-     parameters:nil
-     progress:nil
-     success:^(NSURLSessionDataTask *task, id responseObject) {
-         User *user = [[User alloc] initWithDictionary: responseObject];
-         NSLog(@"user: %@", user.twitterScreenName);
-     }
-     failure:^(NSURLSessionTask *task, NSError *error) {
-         NSLog(@"Error: %@", error.localizedDescription);
-     }];
-    [twitterClient
-     GET:@"1.1/statuses/home_timeline.json"
-     parameters:nil
-     progress:nil
-     success:^(NSURLSessionDataTask *task, id responseObject) {
-         NSLog(@"home_timeline.json: %@", responseObject);
-     }
-     failure:^(NSURLSessionTask *task, NSError *error) {
-         NSLog(@"Error: %@", error.localizedDescription);
-     }];
+    [twitterClient homeTimeline];
+    [twitterClient currentAccount];
     
 }
 

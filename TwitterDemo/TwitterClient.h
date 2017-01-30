@@ -10,4 +10,6 @@
 
 @interface TwitterClient : BDBOAuth1SessionManager
     + (TwitterClient *)sharedInstance;
+    - (void) currentAccount;
+    - (void) homeTimeline;
 @end
