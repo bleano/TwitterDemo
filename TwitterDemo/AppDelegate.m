@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import <BDBOAuth1Manager/BDBOAuth1SessionManager.h>
 #import "User.h"
-
+#import "TwitterClient.h"
 
 @interface AppDelegate ()
 
@@ -53,34 +53,13 @@
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options{
     NSLog(@"openURL %@", url);
     BDBOAuth1Credential *credential = [BDBOAuth1Credential credentialWithQueryString: url.query];
-    BDBOAuth1SessionManager *manager = [[BDBOAuth1SessionManager alloc] initWithBaseURL:[NSURL URLWithString: @"https://api.twitter.com"] consumerKey:@"geqayCv0xeIIBmRmr6DcIpWt1" consumerSecret:@"SCoHYUvLwW1ugOGw4s5bDMh1fBs3vRreH9ad1uscMBCG7oGPlq"];
-    [manager
+    TwitterClient *twitterClient = [TwitterClient sharedInstance];
+    [twitterClient
         fetchAccessTokenWithPath:@"oauth/access_token"
         method:@"POST"
         requestToken:credential
         success:^(BDBOAuth1Credential *requestToken) {
             NSLog(@"requestToken: %@", requestToken.token);
-            [manager
-             GET:@"1.1/account/verify_credentials.json"
-             parameters:nil
-             progress:nil
-             success:^(NSURLSessionDataTask *task, id responseObject) {
-                 User *user = [[User alloc] initWithDictionary: responseObject];
-                 NSLog(@"user: %@", user.twitterScreenName);
-}
-             failure:^(NSURLSessionTask *task, NSError *error) {
-                 NSLog(@"Error: %@", error.localizedDescription);
-             }];
-            [manager
-             GET:@"1.1/statuses/home_timeline.json"
-             parameters:nil
-             progress:nil
-             success:^(NSURLSessionDataTask *task, id responseObject) {
-                 NSLog(@"home_timeline.json: %@", responseObject);
-             }
-             failure:^(NSURLSessionTask *task, NSError *error) {
-                 NSLog(@"Error: %@", error.localizedDescription);
-             }];
         }
         failure:^(NSError *error) {
             NSLog(@"Error: %@", error.localizedDescription);
