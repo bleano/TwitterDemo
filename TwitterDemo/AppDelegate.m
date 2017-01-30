@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import <BDBOAuth1Manager/BDBOAuth1SessionManager.h>
+
 
 @interface AppDelegate ()
 
@@ -49,6 +51,29 @@
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options{
     NSLog(@"openURL %@", url);
+    BDBOAuth1Credential *credential = [BDBOAuth1Credential credentialWithQueryString: url.query];
+    BDBOAuth1SessionManager *manager = [[BDBOAuth1SessionManager alloc] initWithBaseURL:[NSURL URLWithString: @"https://api.twitter.com"] consumerKey:@"geqayCv0xeIIBmRmr6DcIpWt1" consumerSecret:@"SCoHYUvLwW1ugOGw4s5bDMh1fBs3vRreH9ad1uscMBCG7oGPlq"];
+    [manager
+        fetchAccessTokenWithPath:@"oauth/access_token"
+        method:@"POST"
+        requestToken:credential
+        success:^(BDBOAuth1Credential *requestToken) {
+            NSLog(@"requestToken: %@", requestToken.token);
+            [manager
+             GET:@"1.1/account/verify_credentials.json"
+             parameters:nil
+             progress:nil
+             success:^(NSURLSessionDataTask *task, id responseObject) {
+                 NSLog(@"responseObject: %@", responseObject);
+             }
+             failure:^(NSURLSessionTask *task, NSError *error) {
+                 NSLog(@"Error: %@", error.localizedDescription);
+             }];
+        }
+        failure:^(NSError *error) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        }];
+
     return YES;
 }
 
