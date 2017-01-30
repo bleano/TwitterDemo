@@ -36,8 +36,22 @@
 }
 */
 - (IBAction)onLoginButton:(id)sender {
-    NSLog(@"Hello");
-    BDBOAuth1Credential
+    BDBOAuth1SessionManager *manager = [[BDBOAuth1SessionManager alloc] initWithBaseURL:[NSURL URLWithString: @"https://api.twitter.com"] consumerKey:@"geqayCv0xeIIBmRmr6DcIpWt1" consumerSecret:@"SCoHYUvLwW1ugOGw4s5bDMh1fBs3vRreH9ad1uscMBCG7oGPlq"];
+    [manager deauthorize];
+    [manager
+                                        fetchRequestTokenWithPath:@"oauth/request_token"
+                                        method:@"GET"
+                                        callbackURL:[NSURL URLWithString:@"twitterdemo://oauth"]
+                                        scope:nil
+                                        success:^(BDBOAuth1Credential *requestToken) {
+                                            NSString *authURL = [NSString stringWithFormat:@"https://api.twitter.com/oauth/authorize?oauth_token=%@", requestToken.token];
+                                             NSLog(@"requestToken.token: %@", requestToken.token);
+                                            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:authURL]];
+                                        }
+                                        failure:^(NSError *error) {
+                                            NSLog(@"Error: %@", error.localizedDescription);
+                                        }
+                                        ];
 }
 
 @end
