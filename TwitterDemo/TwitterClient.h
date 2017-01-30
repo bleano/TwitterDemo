@@ -9,5 +9,5 @@
 #import <BDBOAuth1Manager/BDBOAuth1SessionManager.h>
 
 @interface TwitterClient : BDBOAuth1SessionManager
-
+    + (BDBOAuth1SessionManager *)sharedInstance;
 @end

@@ -60,15 +60,14 @@
         requestToken:credential
         success:^(BDBOAuth1Credential *requestToken) {
             NSLog(@"requestToken: %@", requestToken.token);
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            [defaults setObject:manager forKey:@"BDBOAuth1SessionManager"];
             [manager
              GET:@"1.1/account/verify_credentials.json"
              parameters:nil
              progress:nil
              success:^(NSURLSessionDataTask *task, id responseObject) {
                  User *user = [[User alloc] initWithDictionary: responseObject];
-             }
+                 NSLog(@"user: %@", user.twitterScreenName);
+}
              failure:^(NSURLSessionTask *task, NSError *error) {
                  NSLog(@"Error: %@", error.localizedDescription);
              }];

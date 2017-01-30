@@ -7,7 +7,7 @@
 //
 
 #import "LoginViewController.h"
-#import "User.h"
+#import "TwitterClient.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
@@ -42,9 +42,9 @@
 }
 
 - (IBAction)onLoginButton:(id)sender {
-    BDBOAuth1SessionManager *manager = [[BDBOAuth1SessionManager alloc] initWithBaseURL:[NSURL URLWithString: @"https://api.twitter.com"] consumerKey:@"geqayCv0xeIIBmRmr6DcIpWt1" consumerSecret:@"SCoHYUvLwW1ugOGw4s5bDMh1fBs3vRreH9ad1uscMBCG7oGPlq"];
-//    [manager deauthorize];
-    [manager
+    TwitterClient *twitterClient = [TwitterClient sharedInstance];
+    [twitterClient deauthorize];
+    [twitterClient
                                         fetchRequestTokenWithPath:@"oauth/request_token"
                                         method:@"GET"
                                         callbackURL:[NSURL URLWithString:@"twitterdemo://oauth"]
