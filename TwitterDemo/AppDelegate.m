@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <BDBOAuth1Manager/BDBOAuth1SessionManager.h>
+#import "User.h"
 
 
 @interface AppDelegate ()
@@ -59,12 +60,24 @@
         requestToken:credential
         success:^(BDBOAuth1Credential *requestToken) {
             NSLog(@"requestToken: %@", requestToken.token);
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:manager forKey:@"BDBOAuth1SessionManager"];
             [manager
              GET:@"1.1/account/verify_credentials.json"
              parameters:nil
              progress:nil
              success:^(NSURLSessionDataTask *task, id responseObject) {
-                 NSLog(@"responseObject: %@", responseObject);
+                 User *user = [[User alloc] initWithDictionary: responseObject];
+             }
+             failure:^(NSURLSessionTask *task, NSError *error) {
+                 NSLog(@"Error: %@", error.localizedDescription);
+             }];
+            [manager
+             GET:@"1.1/statuses/home_timeline.json"
+             parameters:nil
+             progress:nil
+             success:^(NSURLSessionDataTask *task, id responseObject) {
+                 NSLog(@"home_timeline.json: %@", responseObject);
              }
              failure:^(NSURLSessionTask *task, NSError *error) {
                  NSLog(@"Error: %@", error.localizedDescription);
@@ -73,6 +86,7 @@
         failure:^(NSError *error) {
             NSLog(@"Error: %@", error.localizedDescription);
         }];
+    
 
     return YES;
 }

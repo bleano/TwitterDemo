@@ -15,6 +15,9 @@
 		EDA353EE1E3E871F00DD2C47 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA353EC1E3E871F00DD2C47 /* Main.storyboard */; };
 		EDA353F01E3E871F00DD2C47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDA353EF1E3E871F00DD2C47 /* Assets.xcassets */; };
 		EDA353F31E3E871F00DD2C47 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA353F11E3E871F00DD2C47 /* LaunchScreen.storyboard */; };
+		EDE661651E3F0216007A587C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE661641E3F0216007A587C /* User.m */; };
+		EDE661681E3F0223007A587C /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE661671E3F0223007A587C /* Tweet.m */; };
+		EDE6616B1E3F0AD3007A587C /* TwitterClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE6616A1E3F0AD3007A587C /* TwitterClient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +36,12 @@
 		EDA353EF1E3E871F00DD2C47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EDA353F21E3E871F00DD2C47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EDA353F41E3E871F00DD2C47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDE661631E3F0216007A587C /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		EDE661641E3F0216007A587C /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		EDE661661E3F0223007A587C /* Tweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tweet.h; sourceTree = "<group>"; };
+		EDE661671E3F0223007A587C /* Tweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
+		EDE661691E3F0AD3007A587C /* TwitterClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterClient.h; sourceTree = "<group>"; };
+		EDE6616A1E3F0AD3007A587C /* TwitterClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterClient.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +85,10 @@
 		ED55A0351E3E949A00511115 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EDE661631E3F0216007A587C /* User.h */,
+				EDE661641E3F0216007A587C /* User.m */,
+				EDE661661E3F0223007A587C /* Tweet.h */,
+				EDE661671E3F0223007A587C /* Tweet.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -115,6 +128,7 @@
 		EDA353E21E3E871F00DD2C47 /* TwitterDemo */ = {
 			isa = PBXGroup;
 			children = (
+				EDE661621E3F0202007A587C /* API */,
 				ED55A0371E3E94AE00511115 /* Resources */,
 				ED55A0361E3E94A600511115 /* Views */,
 				ED55A0351E3E949A00511115 /* Models */,
@@ -138,6 +152,15 @@
 				EDA353E41E3E871F00DD2C47 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EDE661621E3F0202007A587C /* API */ = {
+			isa = PBXGroup;
+			children = (
+				EDE661691E3F0AD3007A587C /* TwitterClient.h */,
+				EDE6616A1E3F0AD3007A587C /* TwitterClient.m */,
+			);
+			name = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,8 +285,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDE661651E3F0216007A587C /* User.m in Sources */,
 				ED55A0331E3E947900511115 /* LoginViewController.m in Sources */,
 				EDA353EB1E3E871F00DD2C47 /* ViewController.m in Sources */,
+				EDE6616B1E3F0AD3007A587C /* TwitterClient.m in Sources */,
+				EDE661681E3F0223007A587C /* Tweet.m in Sources */,
 				EDA353E81E3E871F00DD2C47 /* AppDelegate.m in Sources */,
 				EDA353E51E3E871F00DD2C47 /* main.m in Sources */,
 			);

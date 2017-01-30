@@ -24,12 +24,23 @@
                             <button opaque="NO" contentMode="top" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CbL-Pe-Ub8">
                                 <rect key="frame" x="100" y="64" width="175" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.20442025624076043" green="0.50797024446916028" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Log in with Twitter">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="onLoginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="34F-uu-BcB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a42-6p-oQn">
+                                <rect key="frame" x="100" y="119" width="175" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.20442025620000001" green="0.50797024449999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Get Twitter Details">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onGetTwitterDetails:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Z0d-PR-POh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -40,6 +51,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="getTwitterDetails" destination="8bC-Xf-vdC" id="zbR-r7-3NU"/>
                         <outlet property="loginButton" destination="CbL-Pe-Ub8" id="Z9C-qX-bnS"/>
                     </connections>
                 </viewController>
